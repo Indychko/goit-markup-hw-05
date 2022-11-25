@@ -6,15 +6,16 @@
     --color-accent-black: #000000;
     --color-light-gray: #F5F4FA;
     --color-feature:#757575;
+    --transition-properties: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *, ::after, ::before {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
 }
 
-/* h1,
+h1,
 h2,
 h3,
 h4,
@@ -22,7 +23,7 @@ h5,
 h6,
 p {
     margin: 0;
-} */
+}
 
 ul {
 list-style: none;
@@ -49,7 +50,8 @@ button {
  }
 
 .header {
-    border: 1px solid #ECECEC;
+    border-bottom: 1px solid #ECECEC;
+    
 }
 
 .header-container {
@@ -73,14 +75,31 @@ button {
  }
 
 .header-nav-link{
-       
+       position: relative;
         font-weight: 500;
         font-size: 14px;
         line-height: 1.71;
         letter-spacing: 0.02em;
         text-decoration: none;
+       transition: color var(--transition-properties); 
        
+            
 }
+
+.header-nav-link.active::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 4px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+    
+    
+}
+
+
 
 .list {
 
@@ -125,8 +144,11 @@ column-gap: 50px;
 
 }
 
+.header-contact-link {
+    transition: color var(--transition-properties);
+}
+
 .header .header-contact-link {
-    
        align-items: center;
         display: flex;
         font-weight: 500;
@@ -134,18 +156,17 @@ column-gap: 50px;
         line-height: 1.14;
         letter-spacing: 0.02em;
         color: var(--color-feature);
-        
-        
-
+    
 }
+
 .header-nav-link:hover,
 .header-nav-link:focus,
 .header-contact-link:hover,
 .header-contact-link:focus{
-        
-    color: var(--color-accent);
-   
+        color: var(--color-accent);
+ 
 }
+
 
 .header-contact-link {
     
@@ -154,8 +175,8 @@ column-gap: 50px;
         letter-spacing: 0.03em;
      color: rgba(255, 255, 255, 0.6);
     
-     
-}
+ }
+
 
 .hero {
    max-width: 1600px;
@@ -202,6 +223,46 @@ column-gap: 50px;
     letter-spacing: 0.06em;
     color: var(--color-white);
     background-color: var(--color-accent);
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.2);
+    transition: opacity 300ms linear, visibility 300ms linear;
+}
+.modal {
+width: 528px;
+min-height: 581px;
+background-color: var(--color-white);
+border-radius: 4px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, 50%) scale(1);
+transition: transform 300ms linear;
+}
+
+.backdrop.is-hidden .modal {
+transform: translate(-50%, 50%) scale(0);
+}
+
+
+.modal-close {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: transparent;
 }
 
 .benefits{
@@ -256,6 +317,38 @@ margin-bottom: 10px;
         text-align: center;
         letter-spacing: 0.03em;
         
+}
+
+.our-business-item {
+position: relative;
+}
+
+.work-label {
+position: absolute;
+width: 100%;
+    height: 70px;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
+.work-label-text {
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+.work-img-img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        mix-blend-mode: normal;
 }
 
 .team {
@@ -317,12 +410,13 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0p
     height: 44px;
     border-radius: 50%;
     cursor: pointer;
-    
+    transition: background-color var(--transition-properties);
 }
 
 .social-icon-link:hover,
  .social-icon-link:focus {
     background-color: var(--color-accent);
+
     
 }
 
@@ -334,6 +428,7 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0p
 
 .team-social-icon {
 fill: #AFB1B8;
+transition: fill var(--transition-properties);
 }
 
 
@@ -428,6 +523,8 @@ padding: 94px 0;
     text-decoration: none;
 }
 
+
+
 .filters-btn {
     font-family: 'Roboto';
         font-style: normal;
@@ -444,8 +541,10 @@ padding: 94px 0;
         height: 38px;
         left: 957px;
         top: 174px;
-       
-    background-color: var(--color-light-gray);
+       background-color: var(--color-light-gray);
+       transition: background-color var(--transition-properties), 
+       color var(--transition-properties),
+        box-shadow var(--transition-properties);
     
      }
 
@@ -465,8 +564,34 @@ padding: 94px 0;
         width: 370px;
         background-color: var(--color-white);
         border: 1px solid #EEEEEE;
+        transition: box-shadow var(--transition-properties);
         
   }
+
+.varieties:hover .portfolio-link-text {
+    transform: translateY(0);
+}
+
+
+.portfolio-link-text {
+    position: absolute;
+    top:0;
+    background-color: rgba(33, 150, 243, 0.9);
+    color: var(--color-white);
+    font-weight: 400;
+        font-size: 18px;
+        line-height: 1.56;
+        padding: 64px 24px;
+        height: 100%;
+        transform: translateY(100%);
+        transition: transform 250ms linear;
+        overflow: auto;
+}
+
+.portfolio-top-wrap {
+position: relative;
+overflow: hidden;
+}
   
   .name-description {
     padding: 20px 24px 20px 24px;
@@ -533,7 +658,7 @@ fill: currentcolor;
         cursor: pointer;
         border: 1px solid #AFB1B8;
         border-radius: 4px;
-       
+       transition: border-color var(--transition-properties);
 }
 
 .list-regular:hover, 
@@ -548,6 +673,7 @@ fill: var(--color-accent);
 
 .customer-icon {
     fill: #AFB1B8;
+    transition: fill var(--transition-properties);
 }
 
    .social-footer-list {
@@ -555,6 +681,7 @@ fill: var(--color-accent);
        justify-content: center;
        column-gap: 10px;
        margin-top: 20px;
+       
 
    }
 
@@ -569,11 +696,13 @@ fill: var(--color-accent);
        height: 44px;
        border-radius: 50%;
        cursor: pointer;
+       transition: background-color var(--transition-properties);
    }
 
    .social-footer-link:hover,
    .social-footer-link:focus {
        background-color: var(--color-accent);
+
 
    }
 
@@ -586,3 +715,8 @@ fill: var(--color-accent);
        fill: #FFFFFF;
    }
 
+   .is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+   }

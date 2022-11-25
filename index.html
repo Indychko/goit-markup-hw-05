@@ -21,7 +21,7 @@
             <nav class="navigation">
                 <ul class="header-nav">
                     <li>
-                        <a class="header-nav-link" href="">Студія</a>
+                        <a class="header-nav-link active" href="./index.html">Студія</a>
                     </li>
                     <li><a class="header-nav-link" class="header-nav-link" href="./portfolio.html">Портфоліо</a></li>
                     <li>
@@ -55,7 +55,8 @@
             <section class="hero">
                 <div class="container">
             <h1 class="hero-text">Ефективні рішення для вашого бізнесу</h1>
-            <button class="hero-btn" type="button">Замовити послугу</button>
+            <button  class="hero-btn" type="button" data-modal-open >Замовити послугу</button>
+            
         </div>
             </section>
     <!--Особливості-->
@@ -110,14 +111,24 @@
         <div class="container">
         <h2 class="section-header">Чим ми займаємося</h2>
         <ul class="list">
-            <li>
-                <img src="./images/box-first.jpg" alt="набір на клавіатурі" width="370" height="294">
+
+            <li class="our-business-item">
+            <img class="work-img-img" src="./images/box-first.jpg" alt="набір на клавіатурі" width="370" height="294">
+                <div class="work-label">
+                    <p class="work-label-text">Десктопні додатки</p>
+                </div>
             </li>
-            <li>
-                <img src="./images/box-second.jpg" alt="телефон та ноутбук" width="370" height="294">
+            <li class="our-business-item">
+                <img class="work-img-img" src="./images/box-second.jpg" alt="телефон та ноутбук" width="370" height="294">
+                <div class="work-label">
+                    <p class="work-label-text">Мобільні додатки</p>
+                </div>
             </li>
-            <li>
-                <img src="./images/box-third.jpg" alt="малюнок на планшеті" width="370" height="294">
+            <li class="our-business-item">
+                <img class="work-img-img" src="./images/box-third.jpg" alt="малюнок на планшеті" width="370" height="294">
+                <div class="work-label">
+                    <p class="work-label-text">Дизайнерські рішення</p>
+                </div>
             </li>
         </ul>
         </div>
@@ -387,9 +398,19 @@
                 </li>
                 </ul>
             </div>
+            <div class="backdrop is-hidden" data-modal>
+                <div class="modal">
+                    <button type="button" class="modal-close" data-modal-close>
+                        <svg class="modal-close-icon" width="18" height="18">
+                            <use href="./images/symbol-defs.svg#icon-close"></use>
+                        </svg>
+                    </button>
+            </div>
             
+            </div>
         </div>
     </footer>
+    <script src="./js/modal.js"></script>
     </body>
     </html>
         
